@@ -24,14 +24,11 @@ public class CrosswordController {
 		int rows = puzzle.length;
 		crossword = new Cell[rows][columns];
 
-		System.out.println(rows);
-		System.out.println(columns);
-
 		int count = 1;
 
 		for(int i = 0; i < rows; i++){
-
-			for(int j = 0; j < columns; i++){
+			
+			for(int j = 0; j < columns; j++){
 
 				if(puzzle[i][j].equals(" ")){
 
@@ -40,10 +37,9 @@ public class CrosswordController {
 				}else{
 
 					crossword[i][j] = new Cell(CellType.CLOSED, puzzle[i][j], count);
-
+					count++;
 				}			
 
-				count++;
 
 			}
 
@@ -82,18 +78,21 @@ public class CrosswordController {
 	public String getHint(String letter) {
 
 		String msg = "";
+		boolean found = false;
 		
-		for(int i = 0; i < crossword.length; i++){
+		for(int i = 0; i < crossword.length && !found; i++){
 
-			for(int j = 0; j < crossword[0].length; j++){
+			for(int j = 0; j < crossword[0].length && !found; j++){
 
 				if(crossword[i][j].getLetter().equals(letter)){
 
-					msg = "Hay una palabra con esa " + letter + " en la casilla " + crossword[i][j].getNumber();
+					msg = "Hay una palabra con la " + letter + " en la casilla " + crossword[i][j].getNumber() + "\n";
+					crossword[i][j].setState(CellType.OPEN);
+					found = true;
 
 				}else{
 
-					msg = "Lo siento, no hay palabras con esa " + letter;
+					msg = "Lo siento, no hay palabras con la " + letter + "\n";
 
 				}
 
