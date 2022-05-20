@@ -20,7 +20,36 @@ public class CrosswordController {
 	 */
 	public void initCrossword(String[][] puzzle) {
 		
-		
+		int columns  = puzzle[0].length;
+		int rows = puzzle.length;
+		crossword = new Cell[rows][columns];
+
+		System.out.println(rows);
+		System.out.println(columns);
+
+		int count = 1;
+
+		for(int i = 0; i < rows; i++){
+
+			for(int j = 0; j < columns; i++){
+
+				if(puzzle[i][j].equals(" ")){
+
+					crossword[i][j] = new Cell(CellType.BLACK, " ", 0);
+
+				}else{
+
+					crossword[i][j] = new Cell(CellType.CLOSED, puzzle[i][j], count);
+
+				}			
+
+				count++;
+
+			}
+
+		}
+
+
 	}
 	/**
 	 * Method to verify if a crossword puzzle is initialized
@@ -51,8 +80,29 @@ public class CrosswordController {
 	 * @return
 	 */
 	public String getHint(String letter) {
+
+		String msg = "";
 		
-		return null;
+		for(int i = 0; i < crossword.length; i++){
+
+			for(int j = 0; j < crossword[0].length; j++){
+
+				if(crossword[i][j].getLetter().equals(letter)){
+
+					msg = "Hay una palabra con esa " + letter + " en la casilla " + crossword[i][j].getNumber();
+
+				}else{
+
+					msg = "Lo siento, no hay palabras con esa " + letter;
+
+				}
+
+
+			}
+
+		}
+
+		return msg;
 	}
 	
 	/**

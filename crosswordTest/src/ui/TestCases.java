@@ -11,6 +11,7 @@ public class TestCases {
 		createBig();
 	}
 	private void createBig() {
+		//15 letters
 		String[][] big = 
 			{
 					{"S", "O", "T", "A", "N", "0", " ", 
@@ -32,6 +33,9 @@ public class TestCases {
 		
 	}
 	private void createSmall() {
+		
+		//4 letters
+
 		String[][] small = 
 			{
 					{"a", "n", "a", " "},
