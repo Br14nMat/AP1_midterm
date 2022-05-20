@@ -112,7 +112,31 @@ public class CrosswordController {
 	 */
 	public String evaluateCell(String letter, int num) {
 		
-		return null;
+		String msg = "";
+		boolean found = false;
+		
+		for(int i = 0; i < crossword.length && !found; i++){
+
+			for(int j = 0; j < crossword[0].length && !found; j++){
+
+				if(crossword[i][j].getLetter().equals(letter) && crossword[i][j].getNumber() == num){
+
+					msg = "La letra " + letter + " si esta en la casilla " + 	num + "\n";
+					crossword[i][j].setState(CellType.OPEN);
+					found = true;
+
+				}else{
+
+					msg = "Lo siento, la letra " + letter + " NO está en la casilla " + num + "\n";
+
+				}
+
+
+			}
+
+		}
+
+		return msg;
 	}
 	
 	public String showCrossword() {
@@ -141,9 +165,12 @@ public class CrosswordController {
 						numbers += " ---  ";
 						letters += " ---  ";
 						
-					}else {
+					}else if(actual.getState()==CellType.OPEN){
 						numbers += " "+actual.getNumber() +"   ";
 						letters += "    "+ actual.getLetter() + " ";
+					}else{
+						numbers += " "+actual.getNumber() +"   ";
+						letters += "      ";
 					}
 				}else //una cifra
 				{
@@ -152,9 +179,12 @@ public class CrosswordController {
 						numbers += " ---  ";
 						letters += " ---  ";
 						
-					}else {
+					}else if(actual.getState()==CellType.OPEN){
 						numbers += " "+actual.getNumber() +"    ";
 						letters += "    "+ actual.getLetter() + " ";
+					}else{
+						numbers += " "+actual.getNumber() +"    ";
+						letters += "      ";
 					}
 				}
 			}

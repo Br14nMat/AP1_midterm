@@ -92,6 +92,7 @@ public void evaluateWord() {
 public void evaluateLetter() {
 	System.out.println("Please insert a letter to evaluate");
 	String letter= sc.nextLine();
+	letter= letter.toUpperCase();
 	
 	System.out.println("Please insert a cell number");
 	int num= sc.nextInt();
@@ -107,6 +108,7 @@ public void evaluateLetter() {
 public void giveHint() {
 	System.out.println("\nTo provide a hint, please insert a letter\n");
 	String letter= sc.nextLine();
+	letter = letter.toUpperCase();
 	
 	String answer = crossword.getHint(letter);
 	
@@ -119,8 +121,8 @@ public void giveHint() {
 private void intGame() {
 	System.out.println("\nThe game is about to get initialized please wait\n");
 	TestCases test = new TestCases();
-	crossword.initCrossword(test.getSmall());
-	System.out.println("\nThe game has been initialized with the small test case\n");
+	crossword.initCrossword(test.getMedium());
+	System.out.println("\nThe game has been initialized with the medium test case\n");
 }
 
 

@@ -29,7 +29,19 @@ public class TestCases {
 		
 	}
 	private void createMedium() {
-		// TODO Auto-generated method stub
+
+		//10 letters
+
+		String [][] medium = {
+
+			{"B", "R", "I", "A", "N", "D", "A", "G", "U", "A"},
+			{"A", "C", "C", "I", "O","N", "I", "S", "T", "A"},
+			{"A", "F", "I", "R", "M", "A", "T", "I", "V","O"},
+			{"D", "E", "P", "O", "R", " ", "C", "A", "S", "I"}
+
+		};
+
+		this.medium = medium;
 		
 	}
 	private void createSmall() {
